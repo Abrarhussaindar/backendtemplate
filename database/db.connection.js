@@ -3,7 +3,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 let connection;
-const url = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@backend.lby2h.mongodb.net/preprod?retryWrites=true&w=majority`
+
+// use your mongodb database url 
+const url = ""
 
 const dbConnect = async () => {
     if (connection) return;
