@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "YourSportz",
+    "title": "Backend",
     "description": "Docs for all the API's",
     "version": "1.0.0"
   },
@@ -13,40 +13,12 @@
       "description": "All the Api's related to Authentications"
     },
     {
-      "name": "Players",
-      "description": "All the Api's related to player"
-    },
-    {
-      "name": "Stats",
-      "description": "All the Api's related to Stats"
-    },
-    {
-      "name": "Teams",
-      "description": "All the Api's related to Teams"
-    },
-    {
-      "name": "Matches",
-      "description": "All the Api's related to Matches"
-    },
-    {
-      "name": "Tournaments",
-      "description": "All the Api's related to Tournaments"
-    },
-    {
-      "name": "Academy",
-      "description": "All the Api's related to Academy"
-    },
-    {
-      "name": "Home",
-      "description": "All the Api's related to Home"
+      "name": "User",
+      "description": "All the Api's related to user"
     },
     {
       "name": "Media",
       "description": "All the Api's related to Media"
-    },
-    {
-      "name": "MatchScore",
-      "description": "All the Api's related to MatchScore"
     },
     {
       "name": "Notifications",
@@ -57,48 +29,16 @@
       "description": "All the Api's related to Payments"
     },
     {
-      "name": "Pricings",
-      "description": "All the Api's related to Pricings"
-    },
-    {
-      "name": "Subscriptions",
-      "description": "All the Api's related to Subscriptions"
-    },
-    {
       "name": "Posts",
       "description": "All the Api's related to Posts"
-    },
-    {
-      "name": "Referral Codes",
-      "description": "All the Api's related to Referral Codes"
     },
     {
       "name": "Reports",
       "description": "All the Api's related to Reports"
     },
     {
-      "name": "Stream V1",
-      "description": "All the Api's related to Stream V1"
-    },
-    {
-      "name": "Stream V2",
-      "description": "All the Api's related to Stream V2"
-    },
-    {
-      "name": "WebApp",
-      "description": "All the Api's related to WebApp"
-    },
-    {
       "name": "Chat V1",
       "description": "All the Api's related to Chat V1"
-    },
-    {
-      "name": "Chat V2",
-      "description": "All the Api's related to Chat V2"
-    },
-    {
-      "name": "Admin",
-      "description": "All the Api's related to Admin"
     },
     {
       "name": "SuperUser",
@@ -117,15 +57,17 @@
         "description": "",
         "parameters": [
           {
+            "name": "passkey",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
                 "phone": {
-                  "example": "any"
-                },
-                "passKey": {
                   "example": "any"
                 }
               }
@@ -138,6 +80,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "409": {
             "description": "Conflict"
@@ -156,15 +101,17 @@
         "description": "",
         "parameters": [
           {
+            "name": "passkey",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
                 "token": {
-                  "example": "any"
-                },
-                "passKey": {
                   "example": "any"
                 }
               }
@@ -195,6 +142,11 @@
         "description": "",
         "parameters": [
           {
+            "name": "passkey",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -202,17 +154,20 @@
               "properties": {
                 "phone": {
                   "example": "any"
-                },
-                "passKey": {
-                  "example": "any"
                 }
               }
             }
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "400": {
             "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "409": {
             "description": "Conflict"
@@ -231,14 +186,16 @@
         "description": "",
         "parameters": [
           {
+            "name": "passkey",
+            "in": "header",
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "passKey": {
-                  "example": "any"
-                },
                 "phone": {
                   "example": "any"
                 },
@@ -246,6 +203,9 @@
                   "example": "any"
                 },
                 "location": {
+                  "example": "any"
+                },
+                "dp": {
                   "example": "any"
                 },
                 "dob": {
@@ -271,6 +231,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "409": {
             "description": "Conflict"
           },
@@ -283,7 +246,7 @@
     "/api/user/update": {
       "put": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -322,7 +285,7 @@
     "/api/user/my-profile": {
       "get": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -341,38 +304,6 @@
           },
           "401": {
             "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/user/stats": {
-      "get": {
-        "tags": [
-          "Stats"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "phone",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -383,7 +314,7 @@
     "/api/user/user-profile": {
       "get": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -420,7 +351,7 @@
     "/api/user/all": {
       "get": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -451,7 +382,7 @@
     "/api/user/update-dp": {
       "put": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -490,7 +421,7 @@
     "/api/user/follow": {
       "post": {
         "tags": [
-          "Players"
+          "Users"
         ],
         "description": "",
         "parameters": [
@@ -525,604 +456,6 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/create": {
-      "post": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "phone": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "logo": {
-                  "example": "any"
-                },
-                "venues": {
-                  "example": "any"
-                },
-                "location": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/profile": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "academyId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/get-by-id": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "academyId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/get-all-by-phone": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "phone",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/get-all": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/get-nearby-academies": {
-      "get": {
-        "tags": [
-          "Home"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "lat",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "long",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "radius",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/add-venues": {
-      "put": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "academyId": {
-                  "example": "any"
-                },
-                "venues": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/slots": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "academyId",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/member-invitations": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "phone",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/member-academies": {
-      "get": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "phone",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/handle-member-invite": {
-      "put": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "academyId": {
-                  "example": "any"
-                },
-                "member": {
-                  "example": "any"
-                },
-                "status": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/handle-coach-invite": {
-      "put": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "academyId": {
-                  "example": "any"
-                },
-                "coach": {
-                  "example": "any"
-                },
-                "status": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/add-coaches": {
-      "put": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "academyId": {
-                  "example": "any"
-                },
-                "coaches": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/add-members": {
-      "put": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "academyId": {
-                  "example": "any"
-                },
-                "members": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/academy/save-invite-link": {
-      "put": {
-        "tags": [
-          "Academy"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "academyId": {
-                  "example": "any"
-                },
-                "link": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/media/upload": {
-      "post": {
-        "tags": [
-          "Media"
-        ],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
